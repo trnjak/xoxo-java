@@ -112,20 +112,20 @@ public class VSComp extends JFrame implements ActionListener {
     }
 
     public int doMove(int[] board) {
-        for (int i = 0; i < 9; i++) {
-            if (board[i] == 0) {
+        for(int i = 0; i < 9; i++) {
+            if(board[i] == 0) {
                 board[i] = 2;
-                if (checkForWinner(board) == 2) {
+                if(checkForWinner(board) == 2) {
                     board[i] = 0;
                     return i;
                 }
                 board[i] = 0;
             }
         }
-        for (int i = 0; i < 9; i++) {
-            if (board[i] == 0) {
+        for(int i = 0; i < 9; i++) {
+            if(board[i] == 0) {
                 board[i] = 1;
-                if (checkForWinner(board) == 1) {
+                if(checkForWinner(board) == 1) {
                     board[i] = 0;
                     return i;
                 }
@@ -133,17 +133,15 @@ public class VSComp extends JFrame implements ActionListener {
             }
         }
         ArrayList<Integer> emptySpots = new ArrayList<>();
-        if (board[4] == 0)
-            return 4;
-        for (int i : new int[]{0, 2, 6, 8}) {
-            if (board[i] == 0)
-                emptySpots.add(i);
+        if(board[4] == 0) {return 4;}
+        for(int i : new int[]{0, 2, 6, 8}) {
+            if(board[i] == 0) {emptySpots.add(i);}
         }
-        if (!emptySpots.isEmpty())
+        if(!emptySpots.isEmpty()) {
             return emptySpots.get(RANDOM.nextInt(emptySpots.size()));
-        for (int i : new int[]{1, 3, 5, 7}) {
-            if (board[i] == 0)
-                emptySpots.add(i);
+        }
+        for(int i : new int[]{1, 3, 5, 7}) {
+            if(board[i] == 0) {emptySpots.add(i);}
         }
         return emptySpots.get(RANDOM.nextInt(emptySpots.size()));
     }
@@ -165,58 +163,58 @@ public class VSComp extends JFrame implements ActionListener {
     }
 	
 	private static int checkForWinner(int board[]) {
-		int w=checkHorizontally(board);
-		if(w!=0) return w;
-		w=checkVertically(board);
-		if(w!=0) return w;
-		w=checkDiagonally(board,1);
-		if(w!=0) return w;
-		w=checkDiagonally(board,2);
-		if(w!=0) return w;
+		int w = checkHorizontally(board);
+		if(w != 0) {return w;}
+		w = checkVertically(board);
+		if(w != 0) {return w;}
+		w = checkDiagonally(board,1);
+		if(w != 0) {return w;}
+		w = checkDiagonally(board,2);
+		if(w != 0) {return w;}
 		return 0;
 	}
 	private static int checkVertically(int board[]) {
-		for(int x=0; x<3; x++) {
-			boolean b1=true;
-			boolean b2=true;
-			for(int y=0; y<3; y++) {
-				if(board[y*3+x]!=1) {
-					b1=false;
+		for(int x =0; x < 3; x++) {
+			boolean b1 = true;
+			boolean b2 = true;
+			for(int y = 0; y < 3; y++) {
+				if(board[y*3+x] != 1) {
+					b1 = false;
 				}
-				if(board[y*3+x]!=2) {
-					b2=false;
+				if(board[y*3+x] != 2) {
+					b2 = false;
 				}
 			}
-			if(b1) return 1;
-			if(b2) return 2;
+			if(b1) {return 1;}
+			if(b2) {return 2;}
 		}
 		return 0;
 	}
 	private static int checkHorizontally(int board[]) {
-		for(int y=0; y<3; y++) {
-			boolean b1=true;
-			boolean b2=true;
-			for(int x=0; x<3; x++) {
-				if(board[y*3+x]!=1) {
-					b1=false;
+		for(int y = 0; y < 3; y++) {
+			boolean b1 = true;
+			boolean b2 = true;
+			for(int x = 0; x < 3; x++) {
+				if(board[y*3+x] != 1) {
+					b1 = false;
 				}
-				if(board[y*3+x]!=2) {
-					b2=false;
+				if(board[y*3+x] != 2) {
+					b2 = false;
 				}
 			}
-			if(b1) return 1;
-			if(b2) return 2;
+			if(b1) {return 1;}
+			if(b2) {return 2;}
 		}
 		return 0;
 	}
 	private static int checkDiagonally(int board[], int color) {
-		boolean b1=true;
-		boolean b2=true;
-		for(int x=0; x<3; x++) {
-			if(board[x*3+x]!=color) b1=false;
-			if(board[(2-x)*3+x]!=color) b2=false;
+		boolean b1 = true;
+		boolean b2 = true;
+		for(int x = 0; x < 3; x++) {
+			if(board[x*3+x] != color) {b1 = false;}
+			if(board[(2-x)*3+x] != color) {b2 = false;}
 		}
-		if(b1||b2) return color;
+		if(b1 || b2) return color;
 		return 0;
 	}
 	private static boolean isFull(int[] board) {

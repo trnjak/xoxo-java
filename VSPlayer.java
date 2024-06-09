@@ -127,24 +127,22 @@ public class VSPlayer extends JFrame implements ActionListener {
                 board[i][j] = btns[i][j].getText();
             }
         }
+        
         for(int i = 0; i < 3; i++){
-            if(board[x][i] != s)
-                break;
+            if(board[x][i] != s) {break;}
             if(i == 3-1){
                 return 1;
             }
         }
         for(int i = 0; i < 3; i++){
-            if(board[i][y] != s)
-                break;
+            if(board[i][y] != s) {break;}
             if(i == 3-1){
                 return 1;
             }
         }
         if(x == y){
             for(int i = 0; i < 3; i++){
-                if(board[i][i] != s)
-                    break;
+                if(board[i][i] != s) {break;}
                 if(i == 3-1){
                     return 1;
                 }
@@ -152,8 +150,7 @@ public class VSPlayer extends JFrame implements ActionListener {
         }
         if(x + y == 3-1){
             for(int i = 0; i < 3; i++){
-                if(board[i][(3-1)-i] != s)
-                    break;
+                if(board[i][(3-1)-i] != s) {break;}
                 if(i == 3-1){
                     return 1;
                 }
